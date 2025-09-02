@@ -2,6 +2,7 @@
 
 const async = require('async')
 const Base = require('bfx-facs-base')
+const fs = require('fs')
 const pino = require('pino')
 
 class LoggingFacility extends Base {
@@ -17,6 +18,22 @@ class LoggingFacility extends Base {
     }
 
     this.init()
+  }
+
+  init () {
+    const confPath = this._getConfPath()
+    if (!fs.existsSync(confPath)) {
+      const defaultConfig = {
+        [this.opts.ns]: {
+          debug: 0,
+          transport: {
+            enabled: false
+          }
+        }
+      }
+      fs.writeFileSync(confPath, JSON.stringify(defaultConfig, null, 2))
+    }
+    super.init()
   }
 
   _start (cb) {
@@ -39,17 +56,18 @@ class LoggingFacility extends Base {
       enabled
     }
 
-    console.log('LoggingFacility: using config', this._hasTransportOptions())
-    console.log('LoggingFacility: using config', this.conf)
     if (this._hasTransportOptions()) {
+      console.log('Creating logger with transport')
       this.logger = this._createLoggerWithTransport(baseConfig)
     } else {
+      console.log('Creating fallback logger')
       this.logger = this._createFallbackLogger(baseConfig)
     }
   }
 
   _hasTransportOptions () {
     return !!(
+      this.conf?.transport?.enabled &&
       this.conf?.transport?.topic &&
       this.conf?.transport?.secretKey
     )
