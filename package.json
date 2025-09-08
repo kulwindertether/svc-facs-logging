@@ -17,7 +17,7 @@
   "dependencies": {
     "async": "3.2.6",
     "b4a": "^1.6.7",
-    "bfx-facs-base": "git+https://github.com/bitfinexcom/bfx-facs-base.git",
+    "bfx-facs-base": "file:../bfx-facs-base",
     "bfx-svc-boot-js": "git+https://github.com/bitfinexcom/bfx-svc-boot-js.git",
     "hyperswarm": "^4.13.1",
     "pino": "9.5.0",

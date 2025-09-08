@@ -83,8 +83,13 @@ class LoggingFacility extends Base {
             topic: this.conf.transport.topic,
             secretKey: this.conf.transport.secretKey,
             maxRetries: this.conf.transport.maxRetries || 3,
-            retryDelay: this.conf.transport.retryDelay || 2000
+            retryDelay: this.conf.transport.retryDelay || 200
           }
+        },
+        {
+          target: 'pino/file',
+          options: { destination: 1 },
+          level: 'debug'
         },
         {
           target: 'pino/file',
