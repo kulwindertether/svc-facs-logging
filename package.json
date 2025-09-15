@@ -1,0 +1,36 @@
+{
+  "name": "svc-facs-logging",
+  "version": "1.0.0",
+  "description": "Logging facility that forwards application logs over hyperswarm",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "brittle tests/{,**/}*.test.js",
+    "test:coverage": "brittle --coverage tests/{,**/}*.test.js",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetherto/svc-facs-logging.git"
+  },
+  "dependencies": {
+    "async": "^3.2.6",
+    "b4a": "^1.6.7",
+    "bfx-facs-base": "git+https://github.com/bitfinexcom/bfx-facs-base.git",
+    "bfx-svc-boot-js": "git+https://github.com/bitfinexcom/bfx-svc-boot-js.git",
+    "hyperswarm": "^4.13.1",
+    "pino": "^9.5.0",
+    "pino-abstract-transport": "^2.0.0"
+  },
+  "devDependencies": {
+    "brittle": "^3.16.3",
+    "standard": "^17.1.2"
+  },
+  "author": "Usman Khan",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tetherto/svc-facs-logging/issues"
+  },
+  "homepage": "https://github.com/tetherto/svc-facs-logging#readme"
+}
