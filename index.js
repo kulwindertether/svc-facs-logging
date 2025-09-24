@@ -127,6 +127,7 @@ class LoggingFacility extends Base {
     return pino(
       baseConfig,
       pino.multistream([
+        { level: 'debug', stream: stdout },
         { level: 'info', stream: stdout },
         { level: 'error', stream: stderr },
         { level: 'warn', stream: stderr },
