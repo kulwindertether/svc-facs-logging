@@ -20,7 +20,7 @@
     "bfx-facs-base": "git+https://github.com/bitfinexcom/bfx-facs-base.git",
     "bfx-svc-boot-js": "git+https://github.com/bitfinexcom/bfx-svc-boot-js.git",
     "hyperswarm": "^4.13.1",
-    "pino": "^9.5.0",
+    "pino": "^10.1.0",
     "pino-abstract-transport": "^2.0.0"
   },
   "devDependencies": {
