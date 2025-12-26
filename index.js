@@ -17,6 +17,12 @@ class LoggingFacility extends Base {
       throw new Error('ERR_INVALID_NAME')
     }
 
+    if (this.opts.mixin && typeof this.opts.mixin !== 'function') {
+      throw new Error('ERR_INVALID_MIXIN')
+    }
+
+    this.mixin = this.opts.mixin ?? (() => { })
+
     this.init()
   }
 
@@ -53,7 +59,8 @@ class LoggingFacility extends Base {
     const baseConfig = {
       name,
       level,
-      enabled
+      enabled,
+      mixin: this.mixin
     }
 
     if (this._hasTransportOptions()) {
