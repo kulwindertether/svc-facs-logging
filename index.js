@@ -21,8 +21,6 @@ class LoggingFacility extends Base {
       throw new Error('ERR_INVALID_MIXIN')
     }
 
-    this.mixin = this.opts.mixin ?? (() => { })
-
     this.init()
   }
 
@@ -60,7 +58,7 @@ class LoggingFacility extends Base {
       name,
       level,
       enabled,
-      mixin: this.mixin
+      ...(this.opts.mixin && { mixin: this.opts.mixin })
     }
 
     if (this._hasTransportOptions()) {
